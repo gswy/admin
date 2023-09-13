@@ -1,0 +1,16 @@
+
+/* AuthPage */
+.auth-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/auth-background.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.auth-box{
+    width: 368px;
+    min-width: 260px;
+}
