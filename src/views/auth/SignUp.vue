@@ -1,5 +1,5 @@
 <template>
-  <RouterView />
+  <div>注册</div>
 </template>
 <script setup>
 

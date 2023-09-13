@@ -1,22 +1,40 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+
+import DashboardView from "@/views/main/index/DashboardView.vue";
+import AuthLayout from "@/layouts/AuthLayout.vue";
+import SignIn from "@/views/auth/SignIn.vue";
+import SignUp from "@/views/auth/SignUp.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      redirect: {name: 'dashboard'}
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
+      path: '/dashboard',
+      name: 'dashboard',
+      component: DashboardView,
+    },
+    {
+      path: '/auth',
+      name: 'auth',
+      component: AuthLayout,
+      redirect: {name: 'SignIn'},
+      children: [
+        {
+          name: 'SignIn',
+          path: 'sign-in',
+          component: SignIn,
+        },
+        {
+          name: 'SignUp',
+          path: 'sign-up',
+          component: SignUp,
+        }
+      ]
+    },
   ]
 })
 
