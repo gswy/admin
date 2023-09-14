@@ -1,3 +1,6 @@
+body{
+    font-size: 14px;
+}
 
 /* AuthPage */
 .auth-page {
@@ -13,4 +16,14 @@
 .auth-box{
     width: 368px;
     min-width: 260px;
+}
+
+.auth-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 48px 0 24px;
+    padding: 0 16px;
+    text-align: center;
+    color: #000000a6;
 }

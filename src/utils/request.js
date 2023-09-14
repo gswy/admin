@@ -1,13 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
+
+import {getToken, hasToken} from '@/utils/cookie'
 
 const instance = axios.create({
-    baseURL: 'https://some-domain.com/api/',
-    timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
+    baseURL: '/api/',
+    timeout: 5000,
 });
 
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
+    if (hasToken()) {
+
+    }
     // 在发送请求之前做些什么
     return config;
 }, function (error) {

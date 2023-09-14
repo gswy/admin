@@ -46,7 +46,7 @@ const state = reactive({
   form: {
     username: '',
     password: '',
-    remember: '',
+    remember: false,
   }
 });
 
