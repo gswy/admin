@@ -1,6 +1,10 @@
 <template>
   <div class="auth-page">
     <div class="auth-box">
+      <div class="auth-title">
+        <img src="@/assets/images/logo.svg" alt="logo" />
+        <span>万云管理后台</span>
+      </div>
       <a-form
         :model="state.form"
         autocomplete="off"

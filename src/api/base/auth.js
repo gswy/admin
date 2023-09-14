@@ -10,6 +10,15 @@ export function signIn(data) {
 
 export function signUp(data) {
     return request({
-        url: '/auth/signUp'
+        method: 'POST',
+        url: '/auth/signUp',
+        data: data
     });
+}
+
+export function getMine() {
+    return request({
+        url: '/auth/mine',
+        method: 'GET',
+    })
 }

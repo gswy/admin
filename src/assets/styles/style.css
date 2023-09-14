@@ -27,3 +27,20 @@ body{
     text-align: center;
     color: #000000a6;
 }
+
+.auth-title{
+    margin-bottom: 40px;
+    text-align: center;
+}
+.auth-title img{
+    width: 42px;
+    height: 42px;
+    vertical-align: bottom;
+    margin-right: 10px;
+}
+.auth-title span{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    line-height: 42px;
+}
