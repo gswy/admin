@@ -1,10 +1,12 @@
 import Cookies from 'js-cookie'
 
+const tokenNam = 'token';
+
 /**
  * 获取Token
  */
 export function getToken() {
-    return Cookies.get('token');
+    return Cookies.get(tokenNam);
 }
 
 /**
@@ -14,7 +16,7 @@ export function getToken() {
  * @param expired 单位（秒）
  */
 export function setToken(token, expired) {
-    Cookies.set('token', {expires: expired / (24 * 3600)})
+    Cookies.set(tokenNam, token, {expires: expired / (24 * 3600)})
 }
 
 /**
@@ -22,5 +24,12 @@ export function setToken(token, expired) {
  * @returns {boolean}
  */
 export function hasToken() {
-    return Boolean(Cookies.get('token'))
+    return Boolean(Cookies.get(tokenNam))
+}
+
+/**
+ * 删除Token
+ */
+export function delToken() {
+    Cookies.remove(tokenNam)
 }

@@ -1,49 +1,62 @@
 import {computed, reactive} from 'vue'
 import { defineStore } from 'pinia'
-import { signIn, signUp, getMine } from '@/api/base/auth'
-import {hasToken, setToken} from '@/utils/cookie';
+import { signIn, getMine } from '@/api/base/auth'
+import {delToken, setToken} from '@/utils/cookie';
 
-export const useAuthStore = defineStore('counter', () => {
+export const useAuthStore = defineStore('auth', () => {
   const state = reactive({
-    auth: null
+    loading: false,
+    hasInit: false,
+    user: null,
   });
-
-  const hasAuth = computed(() => { state.auth !== null })
 
   // 处理登录
   const handleSignIn = (data) => {
     return new Promise((resolve, reject) => {
       signIn(data).then(({token, expired}) => {
         setToken(token, expired);
-        loadAuthInfo();
-        resolve()
+        resolve(true)
       }).catch((e) => {
-        reject()
-      })
-    });
-  }
-
-  const handleSignUp = (data) => {
-    return new Promise((resolve, reject) => {
-      signUp(data).then((resp) => {
-        state.auth = resp;
-        resolve()
-      }).catch((e) => {
-        reject()
-      })
+        reject(false)
+      });
     });
   }
 
   const loadAuthInfo = () => {
-    return getMine();
+    return new Promise((resolve, reject) => {
+      getMine().then((data) => {
+        state.user = data;
+        resolve(true);
+      }).catch((e) => {
+        state.user = null;
+        delToken()
+        reject(false);
+      });
+    });
   }
 
   const init = () => {
     return new Promise((resolve, reject) => {
-
+      if (state.hasInit) {
+        resolve(true); return;
+      }
+      state.loading = true;
+      loadAuthInfo().then((result) => {
+        resolve(result)
+      }).catch((e) => {
+        reject(e)
+      }).finally(() => {
+        state.loading = false;
+        state.hasInit = true;
+      });
     });
   }
 
-
-  return { state, hasAuth, handleSignIn, handleSignUp, init }
+  return {
+    user: state.user,
+    loading: computed(() => state.loading),
+    hasInit: state.hasInit,
+    handleSignIn,
+    init
+  }
 })

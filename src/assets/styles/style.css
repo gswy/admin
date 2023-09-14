@@ -1,7 +1,21 @@
 body{
     font-size: 14px;
+    height: 100%;
 }
-
+#app{
+    height: 100%;
+}
+/* 全屏遮罩 */
+.full-screen-loading{
+    height: 100%;
+}
+.full-screen-loading .css-dev-only-do-not-override-kqecok{
+    max-height: unset!important;
+}
+/* 全局InputIcon */
+.input-icon {
+    color: #909090;
+}
 /* AuthPage */
 .auth-page {
     width: 100vw;
@@ -17,7 +31,6 @@ body{
     width: 368px;
     min-width: 260px;
 }
-
 .auth-footer{
     position: absolute;
     bottom: 0;
@@ -27,7 +40,6 @@ body{
     text-align: center;
     color: #000000a6;
 }
-
 .auth-title{
     margin-bottom: 40px;
     text-align: center;

@@ -8,9 +8,9 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(function (config) {
-    if (hasToken()) {
-        config.headers['Authorization'] = getToken();
-    }
+    // 存在Token
+    if (hasToken()) config.headers['Authorization'] = getToken();
+
     // 在发送请求之前做些什么
     return config;
 }, function (error) {
@@ -18,7 +18,6 @@ instance.interceptors.request.use(function (config) {
     return Promise.reject(error);
 });
 
-// 添加响应拦截器
 instance.interceptors.response.use(function (response) {
     return response.data;
 }, function (error) {

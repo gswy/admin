@@ -20,5 +20,12 @@ export function getMine() {
     return request({
         url: '/auth/mine',
         method: 'GET',
-    })
+    });
+}
+
+export function getMenu() {
+    return request({
+        url: '/auth/menu',
+        method: 'GET'
+    });
 }
