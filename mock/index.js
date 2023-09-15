@@ -1,7 +1,7 @@
 export default [
     {
         url: '/api/auth/signIn',
-        timeout: 3000,
+        // timeout: 3000,
         method: 'POST',
         response: {
             token: 'test',
@@ -10,7 +10,7 @@ export default [
     },
     {
         url: '/api/auth/mine',
-        timeout: 3000,
+        // timeout: 3000,
         method: 'GET',
         response: {
             id: 1,
@@ -24,7 +24,7 @@ export default [
     },
     {
         url: '/api/auth/menu',
-        timeout: 2000,
+        // timeout: 2000,
         method: 'GET',
         response: [
             {

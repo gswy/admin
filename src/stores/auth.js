@@ -10,6 +10,11 @@ export const useAuthStore = defineStore('auth', () => {
     user: null,
   });
 
+  const loading = computed(() => state.loading);
+  const hasInit = computed(() => state.hasInit);
+  const user = computed(() => state.user);
+
+
   // 处理登录
   const handleSignIn = (data) => {
     return new Promise((resolve, reject) => {
@@ -53,9 +58,9 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   return {
-    user: state.user,
-    loading: computed(() => state.loading),
-    hasInit: state.hasInit,
+    user,
+    loading,
+    hasInit,
     handleSignIn,
     init
   }

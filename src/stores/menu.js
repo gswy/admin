@@ -6,8 +6,40 @@ export const useMenuStore = defineStore('menu', () => {
     const state = reactive({
         loading: false,
         hasInit: false,
+        collapsed: false,
         menus: [],
+        openKeys: [],
+        selectKeys: [],
     });
+
+    const loading = computed(() => state.loading);
+    const hasInit = computed(() => state.hasInit);
+
+    const menus = computed(() => {
+        return [];
+    });
+
+    /**
+     * 打开的目录
+     */
+    const openKeys = computed(() => state.openKeys);
+
+    /**
+     * 选择的菜单
+     */
+    const selectKeys = computed(() => state.selectKeys);
+
+    /**
+     * 是否最小化
+     */
+    const collapsed = computed(() => state.collapsed);
+
+    /**
+     * 切换菜单大小
+     */
+    const triggerCollapsed = () => {
+        state.collapsed = !state.collapsed;
+    }
 
     // 初始化菜单
     const init = () => {
@@ -32,9 +64,13 @@ export const useMenuStore = defineStore('menu', () => {
     }
 
     return {
-        menus: state.menus,
-        loading: computed(() => state.loading),
-        hasInit: state.hasInit,
+        menus,
+        loading,
+        openKeys,
+        selectKeys,
+        collapsed,
+        hasInit,
         init,
+        triggerCollapsed
     }
 });

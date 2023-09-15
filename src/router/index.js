@@ -7,6 +7,7 @@ import SignUp from '@/views/auth/SignUp.vue';
 import {hasToken} from "@/utils/cookie";
 import {useBaseStore} from "@/stores/base";
 import BaseLayout from "@/layouts/BaseLayout.vue";
+import MainLayout from "@/layouts/MainLayout.vue";
 
 // 白名单路径列表
 const whiteListPath = [];
@@ -26,9 +27,15 @@ const router = createRouter({
       redirect: {name: 'dashboard'},
       children: [
         {
-          path: '/dashboard',
-          name: 'dashboard',
-          component: DashboardView,
+          path: '/',
+          component: MainLayout,
+          children: [
+            {
+              path: '/dashboard',
+              name: 'dashboard',
+              component: DashboardView,
+            },
+          ],
         },
         {
           path: '/auth',
@@ -48,7 +55,8 @@ const router = createRouter({
             }
           ]
         },
-      ]
+
+      ],
     }
   ]
 });
@@ -69,10 +77,6 @@ router.beforeEach(async (to, from) => {
 
   // 获取目标页面是否白名单页面
   const isWhite = judgeWhite(to);
-
-  console.log('是否白名单?', isWhite);
-  console.log('是否有Token', hasToken());
-  console.log('-------------------------')
 
   // 目标页面是白名单，并且没有token存在;
   if (isWhite && !hasToken()) return true;
