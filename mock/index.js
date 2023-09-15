@@ -31,13 +31,15 @@ export default [
                 id: 1,
                 name: '系统管理',
                 type: 'CATEGORY',
-                meta: {auth: false, permission: 'system'},
+                meta: {auth: true, permission: 'system'},
+                path: '/main/system',
                 children: [
                     {
                         id: 2,
                         name: '用户管理',
                         type: 'MENU',
                         meta: {auth: false, permission: 'users'},
+                        path: '/main/system/user',
                         children: [
                             {id: 21, name: '新增', meta: {auth: true}, permission: 'create'},
                             {id: 22, name: '修改', meta: {auth: true}, permission: 'update'},
@@ -50,6 +52,7 @@ export default [
                         name: '角色管理',
                         type: 'MENU',
                         meta: {auth: false, permission: 'roles'},
+                        path: '/main/system/role',
                         children: [
                             {id: 31, name: '新增', meta: {auth: true}, permission: 'create'},
                             {id: 32, name: '修改', meta: {auth: true}, permission: 'update'},
@@ -62,6 +65,7 @@ export default [
                         name: '部门管理',
                         type: 'MENU',
                         meta: {auth: false, permission: 'branch'},
+                        path: '/main/system/branch/IndexView.vue',
                         children: [
                             {id: 41, name: '新增', meta: {auth: true}, permission: 'create'},
                             {id: 42, name: '修改', meta: {auth: true}, permission: 'update'},

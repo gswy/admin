@@ -27,6 +27,13 @@ body{
     line-height: 48px;
     vertical-align: top;
     cursor: pointer;
+    font-size: 16px;
+}
+.layout-header{
+    background: #fff!important;
+    padding: 0 16px!important;
+    box-shadow: 0 1px 4px rgba(0,21,41,.08)!important;
+    line-height: 48px!important;
 }
 /* 侧栏Logo相关 */
 .ant-layout-sider-collapsed .main-logo{
